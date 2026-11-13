@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042B942D1A1AEC68E7852D64 /* AddPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4829A4DE8827176D73EEA7 /* AddPlaceView.swift */; };
+		1C84D520DB5F6C44A8204FC8 /* RateLimitedPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934CCDCB05E9D1E2CDDF5CEA /* RateLimitedPlacesService.swift */; };
 		30C26F8F444CE25671D8C3BC /* MockCityCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA70677A058F60E07EFCE9C /* MockCityCatalog.swift */; };
 		33413752E1559E1153EFC0AC /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086E16EC5FA130E28B6C582 /* TestSupport.swift */; };
 		33F310B79342FD59DA4D1CCE /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E1586232DAC2440F4092A6 /* Presentation.swift */; };
@@ -89,6 +90,7 @@
 		8086E16EC5FA130E28B6C582 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		815D1155B90E422471242880 /* TraveliApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraveliApp.swift; sourceTree = "<group>"; };
 		92F85671E31CF4C24F8FF000 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		934CCDCB05E9D1E2CDDF5CEA /* RateLimitedPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateLimitedPlacesService.swift; sourceTree = "<group>"; };
 		99C778E2542A7CC96B835414 /* SafetyViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyViews.swift; sourceTree = "<group>"; };
 		A0D7434405D7752CDD247542 /* SafetyScoringService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyScoringService.swift; sourceTree = "<group>"; };
 		A23A69F21DE40CAA570564C1 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				FCDB17813CE8E8195AB00DAC /* ExperimentRunner.swift */,
 				AC2943EB1BCEE9EBE5513E7C /* ExperimentTests.swift */,
+				934CCDCB05E9D1E2CDDF5CEA /* RateLimitedPlacesService.swift */,
 			);
 			path = Evaluation;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				D69FB08EB581630D2B628E6C /* ExperimentRunner.swift in Sources */,
 				387DB9AA4D6E9EDEDD80B5C5 /* ExperimentTests.swift in Sources */,
 				C684BDAD2EE8BB234ED2F7C5 /* ModelTests.swift in Sources */,
+				1C84D520DB5F6C44A8204FC8 /* RateLimitedPlacesService.swift in Sources */,
 				921305AEE12AE3619826AA84 /* ServiceTests.swift in Sources */,
 				33413752E1559E1153EFC0AC /* TestSupport.swift in Sources */,
 				7F59B660649937B587CDB100 /* ViewModelTests.swift in Sources */,

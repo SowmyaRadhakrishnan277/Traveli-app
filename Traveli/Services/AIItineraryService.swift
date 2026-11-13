@@ -20,7 +20,8 @@ struct DayMetrics: Sendable, Equatable {
     var searchErrors: Int = 0
     /// Mean straight-line distance between consecutive verified stops, in metres. nil with fewer than 2 stops.
     var meanLegMetres: Double?
-    /// Wall-clock time for the model call plus map verification.
+    /// Wall-clock time of the model call alone. Map lookups are excluded: they depend on the network
+    /// and rate limits, not on the prompt.
     var seconds: Double
 
     /// Share of the model's suggestions that were real, new places.
@@ -69,7 +70,7 @@ struct AIItineraryService: ItineraryService {
 
         for (index, date) in dates.enumerated() {
             try Task.checkCancellation()
-            let started = clock.now
+            let modelStarted = clock.now
 
             var candidates: [StopCandidate] = []
             do {
@@ -82,11 +83,11 @@ struct AIItineraryService: ItineraryService {
             } catch {
                 candidates = [] // guardrails, context limits, rate limits...: counts as an unusable day
             }
+            let elapsed = clock.now - modelStarted
             let (stops, stats) = await verifier.verifyWithStats(
                 candidates, destination: request.destination, centre: centre, excluding: used
             )
 
-            let elapsed = clock.now - started
             metrics.append(DayMetrics(
                 dayNumber: index + 1,
                 suggested: stats.attempted,

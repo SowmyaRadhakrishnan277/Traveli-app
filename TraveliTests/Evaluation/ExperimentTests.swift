@@ -1,4 +1,5 @@
 import Foundation
+import MapKit
 import XCTest
 @testable import Traveli
 
@@ -256,6 +257,81 @@ final class ExperimentRunnerTests: XCTestCase {
     }
 }
 
+// MARK: - Rate limiting
+
+final class RateLimitedPlacesServiceTests: XCTestCase {
+    private actor Counter {
+        var calls: [String] = []
+        var failuresLeft: Int
+        init(failures: Int = 0) { failuresLeft = failures }
+        func record(_ query: String) -> Bool {
+            calls.append(query)
+            if failuresLeft > 0 { failuresLeft -= 1; return false }
+            return true
+        }
+    }
+
+    private struct Recording: PlacesService {
+        let counter: Counter
+        func search(query: String, near: GeoPoint?) async throws -> [PlaceSuggestion] {
+            if await !counter.record(query) {
+                throw NSError(domain: MKErrorDomain, code: Int(MKError.Code.loadingThrottled.rawValue))
+            }
+            return [.stub(query)]
+        }
+    }
+
+    func testSpacesOutRequests() async throws {
+        let counter = Counter()
+        let service = RateLimitedPlacesService(base: Recording(counter: counter), minInterval: .milliseconds(60))
+        let start = ContinuousClock.now
+        for i in 0..<4 { _ = try await service.search(query: "q\(i)", near: GeoPoint(latitude: 1, longitude: 1)) }
+        let elapsed = ContinuousClock.now - start
+        XCTAssertGreaterThanOrEqual(elapsed, .milliseconds(170), "4 calls need 3 gaps of 60 ms")
+    }
+
+    func testRetriesThrottlingThenSucceeds() async throws {
+        let counter = Counter(failures: 2)
+        let service = RateLimitedPlacesService(base: Recording(counter: counter), minInterval: .milliseconds(1), retryDelay: .milliseconds(5))
+        let results = try await service.search(query: "x", near: GeoPoint(latitude: 1, longitude: 1))
+        XCTAssertEqual(results.count, 1)
+        let calls = await counter.calls.count
+        let retries = await service.throttleRetries
+        XCTAssertEqual(calls, 3)
+        XCTAssertEqual(retries, 2)
+    }
+
+    func testGivesUpAfterMaxRetriesAndDoesNotRetryOtherErrors() async {
+        let always = RateLimitedPlacesService(base: Recording(counter: Counter(failures: 99)), minInterval: .milliseconds(1), retryDelay: .milliseconds(1), maxRetries: 2)
+        do {
+            _ = try await always.search(query: "x", near: nil)
+            XCTFail("Expected throttle error")
+        } catch {
+            XCTAssertTrue(RateLimitedPlacesService.isThrottle(error))
+        }
+        let other = RateLimitedPlacesService(base: StubPlacesService(error: StubError()), minInterval: .milliseconds(1), retryDelay: .milliseconds(1))
+        do {
+            _ = try await other.search(query: "x", near: nil)
+            XCTFail("Expected error")
+        } catch {
+            XCTAssertTrue(error is StubError)
+            let retries = await other.throttleRetries
+            XCTAssertEqual(retries, 0)
+        }
+    }
+
+    func testCachesCentreLookupsButNotVerificationLookups() async throws {
+        let counter = Counter()
+        let service = RateLimitedPlacesService(base: Recording(counter: counter), minInterval: .milliseconds(1))
+        _ = try await service.search(query: "Lisbon", near: nil)
+        _ = try await service.search(query: "Lisbon", near: nil)
+        _ = try await service.search(query: "Alpha Lisbon", near: GeoPoint(latitude: 1, longitude: 1))
+        _ = try await service.search(query: "Alpha Lisbon", near: GeoPoint(latitude: 1, longitude: 1))
+        let calls = await counter.calls
+        XCTAssertEqual(calls, ["Lisbon", "Alpha Lisbon", "Alpha Lisbon"])
+    }
+}
+
 // MARK: - The real experiment (opt-in, slow)
 
 /// Runs the prompt experiment against the real on-device model. Skipped unless enabled:
@@ -276,7 +352,8 @@ final class PromptExperimentTests: XCTestCase {
         let log = out + ".log"
         try? FileManager.default.removeItem(atPath: log)
 
-        let places = MapKitPlacesService()
+        // MapKit throttles at ~50 searches/minute; pace ourselves well below that.
+        let places = RateLimitedPlacesService(base: MapKitPlacesService())
         let runner = ExperimentRunner(
             destinations: Array(ExperimentDestination.defaults.prefix(count)),
             variants: PromptVariant.all,

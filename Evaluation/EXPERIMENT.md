@@ -30,6 +30,14 @@ makes verified rate useless as a primary outcome, so I made distance the primary
 verified rate as a guardrail (H2). The pilot data are not part of the analysis. Anyone judging the results
 should know the hypotheses were not fixed completely blind.
 
+### Deviation disclosed: an aborted first run
+
+A first full run was aborted after about five trials because MapKit throttled searches (about 50 per
+minute) and every later trial failed its destination lookup. No data from it were used. Fixes before the
+real run: a rate limiter with retry on throttling, a cache for the destination-centre lookup (the same city
+is looked up once per prompt), and latency measured on the model call only so waiting on the rate limiter
+cannot distort it. None of these depend on the outcome of any hypothesis test.
+
 ## Variables
 
 | Role | Variable | Type | Levels / unit |
@@ -37,7 +45,7 @@ should know the hypotheses were not fixed completely blind.
 | Independent | Prompt variant | nominal | `baseline`, `compact`, `minimal` (see `PromptVariant.swift`) |
 | Dependent (H1) | Mean distance between consecutive stops | ratio | km, straight line |
 | Dependent (H2) | Verified-place rate | ratio | verified ÷ suggested, 0–1 |
-| Dependent (exploratory) | Latency per day | ratio | seconds (model call + map checks) |
+| Dependent (exploratory) | Latency per day | ratio | seconds, model call only (map lookups excluded: they depend on network and rate limits, not the prompt) |
 | Dependent (exploratory) | Usable-day rate | ratio | share of days with ≥ 2 verified stops |
 | Control | Device, OS, model version, trip length (3 days), dates, no preferences text, fresh model session per day | | held constant |
 | Random | Destination | | 20 cities (the "subjects") |
