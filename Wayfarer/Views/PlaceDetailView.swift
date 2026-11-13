@@ -8,8 +8,12 @@ struct PlaceDetailView: View {
         NavigationStack {
             List {
                 Section("Safety guidance") {
-                    LabeledContent("Rating") { SafetyBadge(place: place) }
-                        .frame(minHeight: 44)
+                    HStack {
+                        Text("Rating")
+                        Spacer()
+                        SafetyBadge(place: place)
+                    }
+                    .frame(minHeight: 44)
                     LabeledContent("Confidence", value: place.safetyConfidence.title)
                         .frame(minHeight: 44)
                     VStack(alignment: .leading, spacing: 4) {
