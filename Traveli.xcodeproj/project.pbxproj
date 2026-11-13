@@ -13,6 +13,7 @@
 		33F310B79342FD59DA4D1CCE /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E1586232DAC2440F4092A6 /* Presentation.swift */; };
 		37A3674274FEAA80C7EC762E /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8731BCE991A6B52196EFA66 /* TripListView.swift */; };
 		383F90A242EA7B5DFCCA8B87 /* GeneratingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC97CFD5769A5418D55E249 /* GeneratingViews.swift */; };
+		387DB9AA4D6E9EDEDD80B5C5 /* ExperimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2943EB1BCEE9EBE5513E7C /* ExperimentTests.swift */; };
 		3898A1CD0236E4AEF6E7C145 /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA733284CBDEA27AE86532B /* DayPicker.swift */; };
 		42548C5DE503F245DD7190B9 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A69F21DE40CAA570564C1 /* Place.swift */; };
 		4EDCF31F6FED762445F0A78B /* AIItineraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B388A3C25F832726CFDA25B /* AIItineraryService.swift */; };
@@ -32,6 +33,7 @@
 		A905F4ABF9EBA996DDEA7726 /* TravelerCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9E589351DEAD352956CD8 /* TravelerCharacter.swift */; };
 		AE97C9B9AA38BF3876772728 /* TripFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAADA87CA960EE9839EA206 /* TripFormView.swift */; };
 		B8D7E387D0C0762105E0732A /* StopVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC6B4ECB7F90283313CDAB /* StopVerifier.swift */; };
+		BD11248E8ECA0FCEE973D1F8 /* PromptVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58E405801306C326F61A838 /* PromptVariant.swift */; };
 		BD6089ED80EB2AA72A241338 /* TraveliApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D1155B90E422471242880 /* TraveliApp.swift */; };
 		C154494649C37A9CA5DE72A0 /* MockSafetyScoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0186D05D1166C62589EEAB9B /* MockSafetyScoringService.swift */; };
 		C684BDAD2EE8BB234ED2F7C5 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F85671E31CF4C24F8FF000 /* ModelTests.swift */; };
@@ -39,6 +41,7 @@
 		C92501C9FA351E5F46D37CD5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B61F0C04BC805A4C3CED9 /* Day.swift */; };
 		CDF4749998917E31D35FDBD6 /* MockItineraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9104B1B6DE666A01C0B11A /* MockItineraryService.swift */; };
 		CFEA466DC32655045BE2CF1A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5589DB92C0C1A6BEFEDFDEA1 /* Enums.swift */; };
+		D69FB08EB581630D2B628E6C /* ExperimentRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB17813CE8E8195AB00DAC /* ExperimentRunner.swift */; };
 		D757FB200F1EF29EEDE38AB0 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE08C39137758273CB1D753 /* PreviewData.swift */; };
 		DBA276586A512344EF487CFB /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309DD44C377B405317470BD0 /* ItineraryView.swift */; };
 		DEE7456CC8E87118A5C8BF26 /* AITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FABF188622C7322A2037D /* AITests.swift */; };
@@ -91,9 +94,11 @@
 		A23A69F21DE40CAA570564C1 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A4C0720EC0F48F51E3FB00A7 /* AIAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIAvailability.swift; sourceTree = "<group>"; };
 		A8731BCE991A6B52196EFA66 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
+		AC2943EB1BCEE9EBE5513E7C /* ExperimentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentTests.swift; sourceTree = "<group>"; };
 		BBE4B3ECFB9816872A68A7F2 /* PlaceSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewModel.swift; sourceTree = "<group>"; };
 		C5C99959EE490053E620D862 /* GeoPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
 		CBB9E589351DEAD352956CD8 /* TravelerCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerCharacter.swift; sourceTree = "<group>"; };
+		D58E405801306C326F61A838 /* PromptVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptVariant.swift; sourceTree = "<group>"; };
 		E286A9A74BE48D922DE95EAA /* ItineraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryService.swift; sourceTree = "<group>"; };
 		E2E1586232DAC2440F4092A6 /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		E68B61F0C04BC805A4C3CED9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 		ECE08C39137758273CB1D753 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		F8D0AFCC95903873C8814AE7 /* ItineraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewModel.swift; sourceTree = "<group>"; };
 		FCA70677A058F60E07EFCE9C /* MockCityCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCityCatalog.swift; sourceTree = "<group>"; };
+		FCDB17813CE8E8195AB00DAC /* ExperimentRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentRunner.swift; sourceTree = "<group>"; };
 		FDDC6B4ECB7F90283313CDAB /* StopVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopVerifier.swift; sourceTree = "<group>"; };
 		FFCEB8EB9E719E4A2C964C93 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +124,7 @@
 				1F9104B1B6DE666A01C0B11A /* MockItineraryService.swift */,
 				0186D05D1166C62589EEAB9B /* MockSafetyScoringService.swift */,
 				58BA3C0E5635AD64F22C8103 /* PlacesService.swift */,
+				D58E405801306C326F61A838 /* PromptVariant.swift */,
 				7EBB23B744D48498B9363BC8 /* RoutingService.swift */,
 				A0D7434405D7752CDD247542 /* SafetyScoringService.swift */,
 				FDDC6B4ECB7F90283313CDAB /* StopVerifier.swift */,
@@ -134,8 +141,18 @@
 				182918F22B32A8AE751E4723 /* ServiceTests.swift */,
 				8086E16EC5FA130E28B6C582 /* TestSupport.swift */,
 				4753F16C2F6C81AD27BFC7D7 /* ViewModelTests.swift */,
+				41623F95772ABC03DA27C139 /* Evaluation */,
 			);
 			path = TraveliTests;
+			sourceTree = "<group>";
+		};
+		41623F95772ABC03DA27C139 /* Evaluation */ = {
+			isa = PBXGroup;
+			children = (
+				FCDB17813CE8E8195AB00DAC /* ExperimentRunner.swift */,
+				AC2943EB1BCEE9EBE5513E7C /* ExperimentTests.swift */,
+			);
+			path = Evaluation;
 			sourceTree = "<group>";
 		};
 		596585CA4AA79976E56352AC /* Support */ = {
@@ -323,6 +340,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE7456CC8E87118A5C8BF26 /* AITests.swift in Sources */,
+				D69FB08EB581630D2B628E6C /* ExperimentRunner.swift in Sources */,
+				387DB9AA4D6E9EDEDD80B5C5 /* ExperimentTests.swift in Sources */,
 				C684BDAD2EE8BB234ED2F7C5 /* ModelTests.swift in Sources */,
 				921305AEE12AE3619826AA84 /* ServiceTests.swift in Sources */,
 				33413752E1559E1153EFC0AC /* TestSupport.swift in Sources */,
@@ -358,6 +377,7 @@
 				5F7F6A2F9C389ADF58D42EC7 /* PlacesService.swift in Sources */,
 				33F310B79342FD59DA4D1CCE /* Presentation.swift in Sources */,
 				D757FB200F1EF29EEDE38AB0 /* PreviewData.swift in Sources */,
+				BD11248E8ECA0FCEE973D1F8 /* PromptVariant.swift in Sources */,
 				979F72F0BF1B3546A5019DC0 /* RoutingService.swift in Sources */,
 				7241E23F1858B2F8D808995A /* SafetyScoringService.swift in Sources */,
 				98116BDB38B81F9505EC0A01 /* SafetyViews.swift in Sources */,
