@@ -10,7 +10,7 @@ struct AppEnvironment: Sendable {
         let sample = MockItineraryService(placesService: places)
         #if canImport(FoundationModels)
         if #available(iOS 26.0, *) {
-            return FallbackItineraryService(primary: AIItineraryService(places: places), fallback: sample)
+            return FallbackItineraryService(primary: AIItineraryService(places: places, suggester: FoundationModelsStopSuggester()), fallback: sample)
         }
         #endif
         return FallbackItineraryService(primary: nil, fallback: sample)
