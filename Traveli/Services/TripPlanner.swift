@@ -9,15 +9,20 @@ struct TripPlanner: Sendable {
 
     /// Builds an (uninserted) trip. The caller inserts it into a `ModelContext`.
     @MainActor
-    func buildTrip(destination: String, startDate: Date, endDate: Date) async throws -> Trip {
+    func buildTrip(
+        destination: String, startDate: Date, endDate: Date, preferences: String = ""
+    ) async throws -> Trip {
         let request = ItineraryRequest(
             destination: destination.trimmingCharacters(in: .whitespacesAndNewlines),
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            preferences: preferences.trimmingCharacters(in: .whitespacesAndNewlines)
         )
-        let proposals = try await itinerary.generateItinerary(for: request)
+        let result = try await itinerary.generateItinerary(for: request)
         let trip = Trip(destination: request.destination, startDate: startDate, endDate: endDate)
-        for proposal in proposals {
+        trip.isAIGenerated = result.origin == .ai
+        trip.generationNote = result.notice
+        for proposal in result.days {
             let day = Day(date: proposal.date)
             for (index, stop) in proposal.places.enumerated() {
                 let place = await makePlace(

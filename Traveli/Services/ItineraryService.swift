@@ -4,6 +4,8 @@ struct ItineraryRequest: Sendable, Equatable {
     var destination: String
     var startDate: Date
     var endDate: Date
+    /// Optional free-text wishes, e.g. "love food markets, quiet mornings". Only used by AI services.
+    var preferences: String = ""
 
     static let maxDays = 14
 
@@ -35,12 +37,35 @@ struct DayProposal: Sendable, Hashable {
     var places: [PlaceProposal]
 }
 
+/// Where an itinerary came from, so the UI can be honest about it.
+enum ItineraryOrigin: String, Sendable, Equatable {
+    case ai
+    case sample
+}
+
+struct Itinerary: Sendable, Equatable {
+    var days: [DayProposal]
+    var origin: ItineraryOrigin
+    /// Shown to the user, e.g. why AI wasn't used.
+    var notice: String = ""
+}
+
 enum ItineraryError: LocalizedError, Equatable {
     case emptyDestination
     case invalidDateRange
     case tooLong(maxDays: Int)
     case destinationNotFound
     case destinationLookupFailed
+    case aiUnavailable(reason: String)
+    case aiFailed
+
+    /// Input problems the user must fix; never worth falling back from.
+    var isValidation: Bool {
+        switch self {
+        case .emptyDestination, .invalidDateRange, .tooLong, .destinationNotFound: true
+        default: false
+        }
+    }
 
     var errorDescription: String? {
         switch self {
@@ -49,12 +74,14 @@ enum ItineraryError: LocalizedError, Equatable {
         case .tooLong(let max): "Trips are limited to \(max) days for now."
         case .destinationNotFound: "We couldn't find that destination. Try a nearby city name."
         case .destinationLookupFailed: "We couldn't look up that destination. Check your connection and try again."
+        case .aiUnavailable(let reason): reason
+        case .aiFailed: "The AI couldn't build a reliable plan this time."
         }
     }
 }
 
-/// Produces a draft itinerary. Mock today; later an LLM behind a small backend
-/// (no API keys ever ship in the app).
+/// Produces a draft itinerary: on-device AI when available, otherwise a sample.
+/// A server-backed LLM can slot in here later (no API keys ever ship in the app).
 protocol ItineraryService: Sendable {
-    func generateItinerary(for request: ItineraryRequest) async throws -> [DayProposal]
+    func generateItinerary(for request: ItineraryRequest) async throws -> Itinerary
 }

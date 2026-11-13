@@ -9,13 +9,14 @@ struct MockItineraryService: ItineraryService {
     var latency: Duration = .milliseconds(700)
     var calendar: Calendar = .current
 
-    func generateItinerary(for request: ItineraryRequest) async throws -> [DayProposal] {
+    func generateItinerary(for request: ItineraryRequest) async throws -> Itinerary {
         let dates = try request.dayDates(calendar: calendar)
         if latency > .zero { try await Task.sleep(for: latency) }
         let template = try await resolveTemplate(for: request.destination)
-        return dates.enumerated().map { index, date in
+        let days = dates.enumerated().map { index, date in
             DayProposal(date: date, places: template.proposals(forDay: index))
         }
+        return Itinerary(days: days, origin: .sample)
     }
 
     private func resolveTemplate(for destination: String) async throws -> CityTemplate {

@@ -12,6 +12,8 @@ final class TripFormViewModel {
     }
 
     var destination = ""
+    /// Optional wishes for the AI, e.g. "food markets, quiet mornings".
+    var preferences = ""
     var startDate: Date
     var endDate: Date
     private(set) var state: LoadState = .idle
@@ -54,7 +56,7 @@ final class TripFormViewModel {
         guard canSubmit else { return nil }
         state = .loading
         do {
-            let trip = try await planner.buildTrip(destination: destination, startDate: startDate, endDate: endDate)
+            let trip = try await planner.buildTrip(destination: destination, startDate: startDate, endDate: endDate, preferences: preferences)
             context.insert(trip)
             try context.save()
             state = .idle

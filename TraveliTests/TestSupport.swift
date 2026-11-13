@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 import XCTest
-@testable import Wayfarer
+@testable import Traveli
 
 enum TestSupport {
     static let calendar: Calendar = {
@@ -52,5 +52,25 @@ extension PlaceSuggestion {
                      category: PlaceCategory = .cafe) -> PlaceSuggestion {
         PlaceSuggestion(name: name, subtitle: "Test St", category: category,
                         location: GeoPoint(latitude: lat, longitude: lon))
+    }
+}
+
+/// Answers searches by matching a substring of the query, like a tiny fake map.
+struct QueryStubPlacesService: PlacesService {
+    var byKeyword: [String: [PlaceSuggestion]]
+
+    func search(query: String, near: GeoPoint?) async throws -> [PlaceSuggestion] {
+        for (keyword, results) in byKeyword where query.localizedCaseInsensitiveContains(keyword) {
+            return results
+        }
+        return []
+    }
+}
+
+struct StubItineraryService: ItineraryService {
+    var result: Result<Itinerary, Error>
+
+    func generateItinerary(for request: ItineraryRequest) async throws -> Itinerary {
+        try result.get()
     }
 }

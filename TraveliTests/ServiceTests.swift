@@ -1,5 +1,5 @@
 import XCTest
-@testable import Wayfarer
+@testable import Traveli
 
 final class MockItineraryServiceTests: XCTestCase {
     private let service = MockItineraryService(placesService: nil, latency: .zero, calendar: TestSupport.calendar)
@@ -11,7 +11,7 @@ final class MockItineraryServiceTests: XCTestCase {
     }
 
     func testOneDayPerDateWithThreeOrderedSlots() async throws {
-        let days = try await service.generateItinerary(for: request("Lisbon", days: 3))
+        let days = try await service.generateItinerary(for: request("Lisbon", days: 3)).days
         XCTAssertEqual(days.count, 3)
         for day in days {
             XCTAssertEqual(day.places.map(\.timeSlot), [.morning, .afternoon, .evening])
@@ -19,15 +19,20 @@ final class MockItineraryServiceTests: XCTestCase {
     }
 
     func testIsDeterministic() async throws {
-        let first = try await service.generateItinerary(for: request("Paris", days: 4))
-        let second = try await service.generateItinerary(for: request("Paris", days: 4))
+        let first = try await service.generateItinerary(for: request("Paris", days: 4)).days
+        let second = try await service.generateItinerary(for: request("Paris", days: 4)).days
         XCTAssertEqual(first, second)
     }
 
     func testDestinationMatchingIgnoresCaseAccentsAndCountrySuffix() async throws {
-        let days = try await service.generateItinerary(for: request("  tokyo, Japan ", days: 1))
+        let days = try await service.generateItinerary(for: request("  tokyo, Japan ", days: 1)).days
         XCTAssertEqual(days.count, 1)
         XCTAssertNotNil(MockCityCatalog.template(for: "TÓKYO"))
+    }
+
+    func testMockResultIsMarkedAsSample() async throws {
+        let result = try await service.generateItinerary(for: request("Lisbon", days: 1))
+        XCTAssertEqual(result.origin, .sample)
     }
 
     func testValidation() async {
@@ -46,7 +51,7 @@ final class MockItineraryServiceTests: XCTestCase {
     func testUnknownDestinationUsesPlacesServiceForCentre() async throws {
         let places = StubPlacesService(results: [.stub("Bruges", lat: 51.2093, lon: 3.2247)])
         let service = MockItineraryService(placesService: places, latency: .zero, calendar: TestSupport.calendar)
-        let days = try await service.generateItinerary(for: request("Bruges", days: 2))
+        let days = try await service.generateItinerary(for: request("Bruges", days: 2)).days
         XCTAssertEqual(days.count, 2)
         let centre = GeoPoint(latitude: 51.2093, longitude: 3.2247)
         XCTAssertTrue(days[0].places.allSatisfy { $0.location.distance(to: centre) < 3_000 })
