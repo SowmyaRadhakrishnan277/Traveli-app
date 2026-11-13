@@ -14,12 +14,18 @@ enum TestSupport {
         calendar.date(from: DateComponents(year: y, month: m, day: d))!
     }
 
+    /// SwiftData destroys models when their container is deallocated, so keep
+    /// every test container alive for the whole test run.
+    @MainActor private static var retainedContainers: [ModelContainer] = []
+
     @MainActor
     static func makeContainer() throws -> ModelContainer {
-        try ModelContainer(
+        let container = try ModelContainer(
             for: Trip.self, Day.self, Place.self,
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
+        retainedContainers.append(container)
+        return container
     }
 
     static let planner = TripPlanner(
