@@ -8,6 +8,10 @@ final class Trip {
     var startDate: Date
     var endDate: Date
     var createdAt: Date
+    /// True when the itinerary came from the on-device AI rather than the sample generator.
+    var isAIGenerated: Bool = false
+    /// Why AI wasn't used (empty when nothing to say).
+    var generationNote: String = ""
 
     @Relationship(deleteRule: .cascade, inverse: \Day.trip)
     var days: [Day] = []

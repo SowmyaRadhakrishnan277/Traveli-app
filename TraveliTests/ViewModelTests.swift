@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 import XCTest
-@testable import Wayfarer
+@testable import Traveli
 
 @MainActor
 final class TripPlannerTests: XCTestCase {

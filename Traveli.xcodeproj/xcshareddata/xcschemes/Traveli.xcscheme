@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F8E1756646A365B7E1884B8"
-               BuildableName = "Wayfarer.app"
-               BlueprintName = "Wayfarer"
-               ReferencedContainer = "container:Wayfarer.xcodeproj">
+               BlueprintIdentifier = "950E1A1C40709776B220CBE8"
+               BuildableName = "Traveli.app"
+               BlueprintName = "Traveli"
+               ReferencedContainer = "container:Traveli.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F8E1756646A365B7E1884B8"
-            BuildableName = "Wayfarer.app"
-            BlueprintName = "Wayfarer"
-            ReferencedContainer = "container:Wayfarer.xcodeproj">
+            BlueprintIdentifier = "950E1A1C40709776B220CBE8"
+            BuildableName = "Traveli.app"
+            BlueprintName = "Traveli"
+            ReferencedContainer = "container:Traveli.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,10 +44,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07CAB6A866C06BE8132060A2"
-               BuildableName = "WayfarerTests.xctest"
-               BlueprintName = "WayfarerTests"
-               ReferencedContainer = "container:Wayfarer.xcodeproj">
+               BlueprintIdentifier = "9D58BC98FA35120CB24847C2"
+               BuildableName = "TraveliTests.xctest"
+               BlueprintName = "TraveliTests"
+               ReferencedContainer = "container:Traveli.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,10 +68,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F8E1756646A365B7E1884B8"
-            BuildableName = "Wayfarer.app"
-            BlueprintName = "Wayfarer"
-            ReferencedContainer = "container:Wayfarer.xcodeproj">
+            BlueprintIdentifier = "950E1A1C40709776B220CBE8"
+            BuildableName = "Traveli.app"
+            BlueprintName = "Traveli"
+            ReferencedContainer = "container:Traveli.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,10 +85,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F8E1756646A365B7E1884B8"
-            BuildableName = "Wayfarer.app"
-            BlueprintName = "Wayfarer"
-            ReferencedContainer = "container:Wayfarer.xcodeproj">
+            BlueprintIdentifier = "950E1A1C40709776B220CBE8"
+            BuildableName = "Traveli.app"
+            BlueprintName = "Traveli"
+            ReferencedContainer = "container:Traveli.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

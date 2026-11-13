@@ -15,7 +15,7 @@ final class NetworkMonitor {
             let online = path.status == .satisfied
             Task { @MainActor in self?.isOnline = online }
         }
-        monitor.start(queue: DispatchQueue(label: "wayfarer.network-monitor"))
+        monitor.start(queue: DispatchQueue(label: "traveli.network-monitor"))
     }
 
     deinit { monitor.cancel() }

@@ -2,7 +2,7 @@ import SwiftData
 import SwiftUI
 
 @main
-struct WayfarerApp: App {
+struct TraveliApp: App {
     @State private var network = NetworkMonitor()
 
     var body: some Scene {

@@ -1,6 +1,6 @@
 import SwiftData
 import XCTest
-@testable import Wayfarer
+@testable import Traveli
 
 @MainActor
 final class ModelTests: XCTestCase {

@@ -1,4 +1,4 @@
-name: Wayfarer
+name: Traveli
 options:
   bundleIdPrefix: com.example
   deploymentTarget:
@@ -10,38 +10,38 @@ settings:
     MARKETING_VERSION: "0.1.0"
     CURRENT_PROJECT_VERSION: "1"
 targets:
-  Wayfarer:
+  Traveli:
     type: application
     platform: iOS
     sources:
-      - Wayfarer
+      - Traveli
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.wayfarer
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.traveli
         GENERATE_INFOPLIST_FILE: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         TARGETED_DEVICE_FAMILY: "1"
-        INFOPLIST_KEY_CFBundleDisplayName: Wayfarer
+        INFOPLIST_KEY_CFBundleDisplayName: Traveli
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.travel
-  WayfarerTests:
+  TraveliTests:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - WayfarerTests
+      - TraveliTests
     dependencies:
-      - target: Wayfarer
+      - target: Traveli
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.wayfarer.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.traveli.tests
         GENERATE_INFOPLIST_FILE: YES
 schemes:
-  Wayfarer:
+  Traveli:
     build:
       targets:
-        Wayfarer: all
+        Traveli: all
     test:
       targets:
-        - WayfarerTests
+        - TraveliTests
