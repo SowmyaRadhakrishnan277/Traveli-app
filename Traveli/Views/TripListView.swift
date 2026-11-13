@@ -14,15 +14,22 @@ struct TripListView: View {
         NavigationStack(path: $path) {
             Group {
                 if trips.isEmpty {
-                    ContentUnavailableView {
-                        Label("No trips yet", systemImage: "airplane")
-                    } description: {
-                        Text("Plan your first solo trip and get a day-by-day itinerary with safety guidance.")
-                    } actions: {
+                    VStack(spacing: 16) {
+                        TravelerCharacter()
+                            .frame(height: 210)
+                        Text("Where to next?")
+                            .font(.title2.bold())
+                        Text("Tell me where you're going and I'll plan a day-by-day trip with safety guidance.")
+                            .font(.body)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 32)
                         Button("Plan a trip") { showingForm = true }
                             .buttonStyle(.borderedProminent)
                             .controlSize(.large)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityElement(children: .contain)
                 } else {
                     List {
                         ForEach(trips) { trip in
@@ -32,7 +39,7 @@ struct TripListView: View {
                     }
                 }
             }
-            .navigationTitle("Wayfarer")
+            .navigationTitle("Traveli")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button { showingForm = true } label: { Label("New trip", systemImage: "plus") }

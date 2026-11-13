@@ -77,6 +77,9 @@ struct ItineraryView: View {
         let places = viewModel.places
         let dayNumber = viewModel.selectedDayIndex + 1
         return List {
+            if viewModel.trip.isAIGenerated || !viewModel.trip.generationNote.isEmpty {
+                Section { GenerationBanner(trip: viewModel.trip) }
+            }
             Section {
                 if places.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {

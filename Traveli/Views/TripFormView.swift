@@ -22,6 +22,15 @@ struct TripFormView: View {
                         .submitLabel(.done)
                         .frame(minHeight: 44)
                 }
+                Section {
+                    TextField("e.g. food markets, quiet mornings, art", text: $viewModel.preferences, axis: .vertical)
+                        .lineLimit(2...4)
+                        .frame(minHeight: 44)
+                } header: {
+                    Text("Preferences (optional)")
+                } footer: {
+                    aiStatusFooter
+                }
                 Section("When") {
                     DatePicker("Start", selection: $viewModel.startDate, displayedComponents: .date)
                         .frame(minHeight: 44)
@@ -50,6 +59,7 @@ struct TripFormView: View {
                     footer
                 }
             }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("New trip")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -58,6 +68,21 @@ struct TripFormView: View {
                 }
             }
             .interactiveDismissDisabled(viewModel.isLoading)
+            .overlay {
+                if viewModel.isLoading { GeneratingOverlay() }
+            }
+        }
+    }
+
+    /// Tells the user up front whether they'll get an AI plan or a sample.
+    @ViewBuilder
+    private var aiStatusFooter: some View {
+        switch AIAvailability.current {
+        case .available:
+            Label("AI plans your trip on this device with Apple Intelligence. Every place is checked on Apple Maps.",
+                  systemImage: "sparkles")
+        case .unavailable(let reason):
+            Label("\(reason) You'll get a sample itinerary.", systemImage: "info.circle")
         }
     }
 
