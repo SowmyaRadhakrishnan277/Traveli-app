@@ -84,6 +84,30 @@ VoiceOver: each stop is one element with a full spoken summary (stop number, cat
 
 `TraveliTests` covers the data model (ordering, cascade delete, band rules), mock itinerary/safety/routing services (determinism, validation, edge cases), `TripPlanner`, and the view models (add / delete / reorder with commute recalculation, form and search states) using an in-memory `ModelContainer`.
 
+## Evaluation: a controlled prompt experiment
+
+The AI itinerary's prompt was tested like a research question, not tuned by feel (course concepts: experimental
+design and statistics for human-centred AI).
+
+- **Question:** does an explicit "keep stops within 3 km" instruction make AI days more compact, without
+  hurting the share of suggestions that are real places?
+- **Design:** within-subjects, 20 destinations x 3 prompts x 3 days, Latin-square counterbalanced, destination as
+  the unit of analysis, hypotheses and decision rules written down before the run
+  ([`Evaluation/EXPERIMENT.md`](Evaluation/EXPERIMENT.md)).
+- **Pipeline:** a testable AI service (injectable model, per-day metrics), a rate-limited experiment runner, and a
+  dependency-free Python analysis (paired t-test, Cohen's d_z, repeated-measures ANOVA with Greenhouse-Geisser,
+  Wilcoxon, Bonferroni, power analysis) checked against published critical values (30 Python tests).
+- **Result:** the pre-registered hypotheses were **not supported** (compact - baseline = +1.09 km, 95% CI
+  [-0.36, 2.54], p = .131; non-inferiority inconclusive). The study was underpowered for effects this small (about
+  61 destinations needed). An exploratory finding: dropping the safety and geography guidance
+  ("minimal" prompt) lowered the real-place rate from 0.86 to 0.72 (d_z = 0.67) and usable days from 0.93 to
+  0.69. Full tables and charts: [`Evaluation/results/report.md`](Evaluation/results/report.md).
+
+```bash
+python3 -m unittest discover -s Evaluation -p "test_*.py"                        # statistics + analysis tests
+python3 Evaluation/analyze.py Evaluation/results/experiment.csv --out Evaluation/results   # regenerate the report
+```
+
 ## Privacy and safety-score bias
 
 - **Privacy:** trips live only on the device (SwiftData). The app has no accounts, analytics or API keys, and does not request your location. Destination and place searches go to Apple Maps (MapKit) only.

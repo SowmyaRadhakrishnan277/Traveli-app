@@ -102,6 +102,46 @@ Statistics are implemented in `stats.py` (no dependencies) and checked against p
 No participants and no personal data. Everything runs on the researcher's own device with Apple's
 on-device model; the only network use is Apple Maps place lookups with place names.
 
+## Outcome
+
+Full run: 20 destinations x 3 prompts x 3 days (180 day-rows). Two trials were excluded because a map lookup
+failed. Complete report, tables and charts: [`results/report.md`](results/report.md); raw data:
+[`results/experiment.csv`](results/experiment.csv).
+
+**Neither pre-registered hypothesis was supported.**
+
+| | Result |
+|---|---|
+| **H1** compact prompt shortens days | **Not supported.** compact - baseline = +1.09 km (days were, if anything, longer), 95% CI [-0.36, 2.54], t(18) = 1.58, p = .131, d_z = 0.36 (small). Wilcoxon p = .251. |
+| **H2** compact does not hurt verified rate | **Non-inferiority not shown.** Difference +0.006, 95% CI [-0.069, 0.080]. The point estimate is flat, but the interval is too wide to rule out a drop larger than 0.05. This is inconclusive, not evidence of harm. |
+
+**Why "not supported" is not "no effect".** With 19 destinations the study could only detect large effects.
+Detecting the observed d_z = 0.36 with 80% power would need about 61 destinations (74 at the confirmatory
+alpha). The honest conclusion is: no evidence that the 3 km sentence helps, the point estimate points the
+wrong way, and a larger study would be needed to say more.
+
+**Exploratory finding (not pre-registered, so treat as a lead, not a conclusion).** The bare *minimal*
+prompt was clearly worse at producing real, usable places than the *baseline* prompt:
+
+| | baseline | compact | minimal | Omnibus (repeated-measures ANOVA) |
+|---|---|---|---|---|
+| Verified-place rate | 0.86 | 0.87 | **0.72** | F(2, 34) = 6.60, p = .004 (GG p = .006), partial eta^2 = .28 |
+| Usable-day rate | 0.93 | 0.96 | **0.69** | F(2, 34) = 12.58, p < .001, partial eta^2 = .43 |
+
+Minimal vs baseline on verified rate: d_z = 0.67 (medium), Bonferroni p = .033; on usable days: d_z = 0.87
+(large), Bonferroni p = .005. Non-parametric Wilcoxon tests agree. Latency (model call only) also differed
+significantly across prompts, but by about 0.1 s out of 1.7 s, which is **significant but not important**.
+
+**What this means for the app.** The guidance already in the shipped baseline prompt (real places, busy
+and well-lit areas, no repeats) is doing real work, and the extra distance constraint did not add to it. The
+baseline prompt stays; the compact variant is not adopted.
+
+**Caveats.** One on-device model version on one device; 20 cities; one generation per cell; day-to-day noise
+in a probabilistic model; straight-line distance is only a proxy for "compact". Position effects in the
+order check were small but present (mean distance rose from 4.1 to 5.0 km from first to third position);
+counterbalancing keeps this from biasing the comparison but it adds noise. A natural next step is a larger
+run, which is what the sensitivity analysis calls for.
+
 ## Reproduce
 
 ```bash
@@ -120,4 +160,4 @@ python3 Evaluation/analyze.py Evaluation/results/experiment.csv --out Evaluation
 python3 -m unittest discover -s Evaluation -p "test_*.py"
 ```
 
-Results: [`results/report.md`](results/report.md).
+Full report: [`results/report.md`](results/report.md).
