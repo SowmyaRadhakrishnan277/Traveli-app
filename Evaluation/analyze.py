@@ -41,6 +41,14 @@ def num(x: float, places: int = 2) -> str:
     return "inf" if math.isinf(x) else ("%.*f" % (places, x))
 
 
+def fmt_n(d: float, alpha: float) -> str:
+    """Required sample size, capped so a near-zero effect does not print an absurd number."""
+    if d < 0.02:
+        return "more than 1,000"
+    n = st.required_n_paired(d, alpha=alpha)
+    return "more than 1,000" if n > 1000 else "about %d" % n
+
+
 def load(path: str) -> List[Dict[str, str]]:
     with open(path, newline="") as handle:
         return list(csv.DictReader(handle))
@@ -208,9 +216,14 @@ def analyse(rows: List[Dict[str, str]], out_dir: str) -> str:
                 verdict = "CONTRADICTED: compact days were longer."
             else:
                 verdict = "NOT SUPPORTED: no reliable difference at this sample size."
+            add("Confirmatory tests use every destination with valid data for the two prompts being compared, so n can be larger than in the three-way analysis above. Differences here are written compact - baseline.\n")
             add("**H1 (primary).** The compact prompt shortens the mean distance between stops compared with baseline (n = %d).\n" % len(kept))
             add("- compact - baseline = %s km, 95%% CI [%s, %s]; %s; Wilcoxon p %s" % (num(t["mean_diff"], 3), num(lo, 3), num(hi, 3), t_line(t), fmt_p(w["p"])))
-            add("- **%s**\n" % verdict)
+            add("- **%s**" % verdict)
+            if not math.isinf(t["d_z"]):
+                add("- Sensitivity: to detect the observed |d_z| = %s with 80%% power would need %s destinations (alpha .05) or %s (alpha .025); this study had %d." % (
+                    num(abs(t["d_z"])), fmt_n(abs(t["d_z"]), 0.05), fmt_n(abs(t["d_z"]), CONFIRMATORY_ALPHA), len(kept)))
+            add("")
             verdicts["H1"] = verdict
         kept, m = paired_columns(trials, ["compact", "baseline"], "verified_rate")
         if len(kept) >= 3:
@@ -256,7 +269,14 @@ def analyse(rows: List[Dict[str, str]], out_dir: str) -> str:
 
     add("## Threats to validity\n")
     add("- **External validity:** destinations are a convenience sample of 20 cities; one device, one OS and one on-device model version. Results describe this model, not language models in general.")
-    add("- **Ceiling effects:** verified rate may sit near 100%, leaving little room to differ; that is why it is a guardrail rather than the primary outcome.")
+    base = metric_results.get("verified_rate", {}).get("descriptives") if metric_results else None
+    if base:
+        base_mean = float(base[0]["mean"])
+        add("- **Ceiling effects:** a pilot suggested verified rate might sit at 100%%. %s" % (
+            "The full run confirms it (baseline mean %.2f): little room to differ." % base_mean if base_mean >= 0.95 else
+            "The full run did not show one (baseline mean %.2f), so there was room for prompts to differ." % base_mean))
+    add("- **Power:** with this many destinations only fairly large effects are detectable; a non-significant result is not evidence of no effect (see the sensitivity line under H1).")
+    add("- **Run-to-run noise:** each cell is a single generation by a probabilistic model; a repeat run would give somewhat different numbers.")
     add("- **Distance is a proxy:** straight-line distance between stops is not travel time and says nothing about whether the plan is pleasant or safe.")
     add("- **Map coverage:** a place that exists but is missing from Apple Maps counts as 'not found', which may penalise less-mapped regions.")
     add("")

@@ -37,6 +37,23 @@ class DistributionTests(unittest.TestCase):
         self.assertAlmostEqual(lo + hi, 6.0, places=9)
 
 
+class PowerTests(unittest.TestCase):
+    def test_normal_ppf_known_values(self):
+        self.assertAlmostEqual(stats.normal_ppf(0.975), 1.95996, places=4)
+        self.assertAlmostEqual(stats.normal_ppf(0.80), 0.84162, places=4)
+        self.assertAlmostEqual(stats.normal_ppf(0.5), 0.0, places=9)
+
+    def test_required_n_matches_published_tables_closely(self):
+        # Exact (noncentral t) values: d=0.5 -> 34, d=0.8 -> 15, d=0.2 -> 199 for power .80, alpha .05.
+        for d, exact in [(0.5, 34), (0.8, 15), (0.2, 199)]:
+            self.assertLessEqual(abs(stats.required_n_paired(d) - exact), 2, "d=%s" % d)
+
+    def test_smaller_effects_and_stricter_alpha_need_more_subjects(self):
+        self.assertGreater(stats.required_n_paired(0.3), stats.required_n_paired(0.6))
+        self.assertGreater(stats.required_n_paired(0.5, alpha=0.025), stats.required_n_paired(0.5))
+        self.assertGreater(stats.required_n_paired(0.5, power=0.9), stats.required_n_paired(0.5))
+
+
 class PairedTests(unittest.TestCase):
     def test_paired_t_worked_example(self):
         result = stats.paired_t([2, 4, 6, 8, 10], [1, 2, 3, 4, 5])  # differences 1..5

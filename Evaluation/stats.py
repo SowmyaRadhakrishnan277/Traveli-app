@@ -86,6 +86,29 @@ def normal_cdf(z: float) -> float:
     return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
 
 
+def normal_ppf(p: float) -> float:
+    """Inverse of the standard normal CDF, by bisection."""
+    lo, hi = -10.0, 10.0
+    for _ in range(200):
+        mid = (lo + hi) / 2.0
+        if normal_cdf(mid) < p:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2.0
+
+
+def required_n_paired(d: float, alpha: float = 0.05, power: float = 0.80) -> int:
+    """Approximate subjects needed to detect a paired effect of size d_z (two-sided).
+
+    Normal approximation plus a small-sample correction; within a subject or two of exact
+    noncentral-t tables (e.g. d = 0.5, power .80, alpha .05 gives 33 against 34 exactly).
+    """
+    z_a = normal_ppf(1.0 - alpha / 2.0)
+    z_b = normal_ppf(power)
+    return int(math.ceil(((z_a + z_b) / abs(d)) ** 2 + z_a ** 2 / 4.0))
+
+
 def t_critical(df: float, alpha: float = 0.05) -> float:
     """Two-sided critical t, by bisection on the p-value."""
     lo, hi = 0.0, 1000.0

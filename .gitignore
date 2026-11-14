@@ -4,3 +4,6 @@ DerivedData/
 build/
 .build/
 *.xcuserstate
+__pycache__/
+*.pyc
+Evaluation/results/*.log
