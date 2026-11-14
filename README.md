@@ -8,9 +8,17 @@ Swift 5 · SwiftUI · SwiftData · MapKit · iOS 17+ · no third-party dependenc
 
 ## Screenshots
 
-| Trips | Itinerary | Safety detail |
+| Home | New trip | Planning |
 | :---: | :---: | :---: |
-| _placeholder_ | _placeholder_ | _placeholder_ |
+| <img src="docs/screenshots/01-home.png" width="220" alt="Home screen with the animated traveller"> | <img src="docs/screenshots/02-new-trip.png" width="220" alt="New trip form with preferences"> | <img src="docs/screenshots/03-planning.png" width="220" alt="Planning screen with the walking traveller"> |
+| Traveli's animated traveller greets you | Optional preferences, with an honest note on AI availability | The traveller walks while the on-device AI plans |
+
+| AI itinerary | Safety detail | Graceful fallback |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/04-ai-itinerary.png" width="220" alt="AI-generated itinerary for Paris with map and safety bands"> | <img src="docs/screenshots/05-safety-detail.png" width="220" alt="Safety detail sheet"> | <img src="docs/screenshots/06-fallback.png" width="220" alt="Sample itinerary shown after the AI could not build a reliable plan"> |
+| Map, route, commute times and safety bands; every place verified on Apple Maps | Rating, confidence, reason, day vs night, sources and a disclaimer | If the AI can't build a reliable plan, the app says so and shows a sample instead |
+
+_Screenshots are from the iPhone 18 Pro simulator (iOS 27.2). Safety scores are demo data and are labelled that way in the app. The fallback screenshot is a real run, not staged._
 
 ## Run it
 
@@ -117,6 +125,7 @@ python3 Evaluation/analyze.py Evaluation/results/experiment.csv --out Evaluation
 ## Limitations
 
 - AI itineraries need iOS 26+ with Apple Intelligence enabled; otherwise a sample is used. The on-device model can be slow (about a few seconds per day) and may suggest less-than-perfect plans; places are verified to exist, but opening hours and distances between stops are not.
+- AI plans can fall back to a sample. In the prompt experiment, 17 of 20 three-day plans (85%) with the shipped prompt had every day usable; in the rest, one weak day (fewer than two verified places) makes the whole plan unreliable, so the app shows a sample and says why. Keeping the good days and retrying only the weak one is the obvious next improvement.
 - Safety data is mock. Sample itineraries for unknown destinations are generic placeholder stops.
 - Max 14 days per trip. Time slots stay with a place when reordered.
 - Map tiles and place search need a network; saved trips and their data do not.
