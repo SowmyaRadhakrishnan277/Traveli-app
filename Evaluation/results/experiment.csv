@@ -1,0 +1,181 @@
+destination,region,variant,position,day,suggested,verified,rejected_not_found,rejected_duplicate,search_errors,verified_rate,mean_leg_km,latency_s,usable
+Lisbon,Europe,baseline,1,1,3,3,0,0,0,1.0000,1.5523,3.277,1
+Lisbon,Europe,baseline,1,2,3,1,0,2,0,0.3333,,1.840,0
+Lisbon,Europe,baseline,1,3,3,1,0,2,0,0.3333,,1.784,0
+Lisbon,Europe,compact,2,1,3,3,0,0,0,1.0000,1.5523,2.000,1
+Lisbon,Europe,compact,2,2,3,2,0,1,0,0.6667,3.5551,1.736,1
+Lisbon,Europe,compact,2,3,3,2,0,1,0,0.6667,5.6777,1.848,1
+Lisbon,Europe,minimal,3,1,3,3,0,0,0,1.0000,3.9171,1.934,1
+Lisbon,Europe,minimal,3,2,3,0,0,3,0,0.0000,,1.785,0
+Lisbon,Europe,minimal,3,3,3,3,0,0,0,1.0000,3.6901,1.721,1
+Tokyo,Asia,compact,1,1,3,3,0,0,0,1.0000,1.9261,1.932,1
+Tokyo,Asia,compact,1,2,3,3,0,0,0,1.0000,2.8643,1.807,1
+Tokyo,Asia,compact,1,3,3,3,0,0,0,1.0000,5.0727,1.741,1
+Tokyo,Asia,minimal,2,1,3,3,0,0,0,1.0000,4.0900,1.704,1
+Tokyo,Asia,minimal,2,2,3,0,0,3,0,0.0000,,1.565,0
+Tokyo,Asia,minimal,2,3,3,1,0,2,0,0.3333,,1.686,0
+Tokyo,Asia,baseline,3,1,3,3,0,0,0,1.0000,4.5603,1.708,1
+Tokyo,Asia,baseline,3,2,3,3,0,0,0,1.0000,6.1258,1.645,1
+Tokyo,Asia,baseline,3,3,3,3,0,0,0,1.0000,7.7036,1.619,1
+Mexico City,Americas,minimal,1,1,3,3,0,0,0,1.0000,4.4937,2.101,1
+Mexico City,Americas,minimal,1,2,3,3,0,0,0,1.0000,5.1984,1.758,1
+Mexico City,Americas,minimal,1,3,3,3,0,0,0,1.0000,5.0218,1.828,1
+Mexico City,Americas,baseline,2,1,3,3,0,0,0,1.0000,3.1621,1.776,1
+Mexico City,Americas,baseline,2,2,3,3,0,0,0,1.0000,7.3406,1.652,1
+Mexico City,Americas,baseline,2,3,3,2,0,1,0,0.6667,4.3333,1.621,1
+Mexico City,Americas,compact,3,1,3,3,0,0,0,1.0000,2.8563,1.749,1
+Mexico City,Americas,compact,3,2,3,2,0,1,0,0.6667,10.9012,1.670,1
+Mexico City,Americas,compact,3,3,3,1,0,2,0,0.3333,,1.773,0
+Cape Town,Africa,baseline,1,1,3,3,0,0,0,1.0000,2.7311,2.129,1
+Cape Town,Africa,baseline,1,2,3,3,0,0,0,1.0000,14.8660,1.872,1
+Cape Town,Africa,baseline,1,3,3,3,0,0,0,1.0000,2.9000,1.723,1
+Cape Town,Africa,compact,2,1,3,3,0,0,0,1.0000,1.2914,1.750,1
+Cape Town,Africa,compact,2,2,3,3,0,0,0,1.0000,0.8415,2.185,1
+Cape Town,Africa,compact,2,3,3,3,0,0,0,1.0000,14.8647,1.972,1
+Cape Town,Africa,minimal,3,1,3,3,0,0,0,1.0000,15.2245,1.672,1
+Cape Town,Africa,minimal,3,2,3,2,0,1,0,0.6667,7.2820,1.744,1
+Cape Town,Africa,minimal,3,3,3,1,0,2,0,0.3333,,1.603,0
+Paris,Europe,compact,1,1,3,3,0,0,0,1.0000,1.1398,1.681,1
+Paris,Europe,compact,1,2,3,3,0,0,0,1.0000,2.7501,1.758,1
+Paris,Europe,compact,1,3,3,3,0,0,0,1.0000,1.4321,1.978,1
+Paris,Europe,minimal,2,1,3,3,0,0,0,1.0000,2.2048,1.565,1
+Paris,Europe,minimal,2,2,3,3,0,0,0,1.0000,3.4676,1.703,1
+Paris,Europe,minimal,2,3,3,3,0,0,0,1.0000,5.7133,1.852,1
+Paris,Europe,baseline,3,1,3,3,0,0,0,1.0000,2.7403,1.641,1
+Paris,Europe,baseline,3,2,3,3,0,0,0,1.0000,0.9328,1.651,1
+Paris,Europe,baseline,3,3,3,2,0,1,0,0.6667,2.3797,1.773,1
+Chennai,Asia,minimal,1,1,3,3,0,0,0,1.0000,7.3747,1.766,1
+Chennai,Asia,minimal,1,2,3,1,0,2,0,0.3333,,1.719,0
+Chennai,Asia,minimal,1,3,3,1,0,2,0,0.3333,,1.580,0
+Chennai,Asia,baseline,2,1,3,3,0,0,0,1.0000,3.8555,1.793,1
+Chennai,Asia,baseline,2,2,3,2,0,1,0,0.6667,11.7716,1.787,1
+Chennai,Asia,baseline,2,3,3,1,0,2,0,0.3333,,1.650,0
+Chennai,Asia,compact,3,1,3,3,0,0,0,1.0000,3.4437,1.904,1
+Chennai,Asia,compact,3,2,3,3,0,0,0,1.0000,1.8618,1.662,1
+Chennai,Asia,compact,3,3,3,2,0,1,0,0.6667,13.5511,1.779,1
+Buenos Aires,Americas,baseline,1,1,3,3,0,0,0,1.0000,1.4689,2.099,1
+Buenos Aires,Americas,baseline,1,2,3,3,0,0,0,1.0000,5.4483,1.775,1
+Buenos Aires,Americas,baseline,1,3,3,0,0,3,0,0.0000,,1.691,0
+Buenos Aires,Americas,compact,2,1,3,3,0,0,0,1.0000,4.7078,1.711,1
+Buenos Aires,Americas,compact,2,2,3,2,0,1,0,0.6667,10.8461,1.694,1
+Buenos Aires,Americas,compact,2,3,3,2,0,1,0,0.6667,1.4857,2.052,1
+Buenos Aires,Americas,minimal,3,1,3,3,0,0,0,1.0000,5.4568,1.571,1
+Buenos Aires,Americas,minimal,3,2,3,2,0,1,0,0.6667,3.0406,1.851,1
+Buenos Aires,Americas,minimal,3,3,3,0,0,3,0,0.0000,,1.633,0
+Sydney,Oceania,compact,1,1,3,3,0,0,0,1.0000,1.7451,1.699,1
+Sydney,Oceania,compact,1,2,3,2,0,1,0,0.6667,1.0645,1.743,1
+Sydney,Oceania,compact,1,3,3,2,0,1,0,0.6667,0.6988,1.648,1
+Sydney,Oceania,minimal,2,1,3,3,0,0,0,1.0000,1.0512,1.627,1
+Sydney,Oceania,minimal,2,2,3,2,0,1,0,0.6667,1.9423,1.727,1
+Sydney,Oceania,minimal,2,3,3,2,0,1,0,0.6667,2.8337,1.586,1
+Sydney,Oceania,baseline,3,1,3,3,0,0,0,1.0000,1.0512,1.632,1
+Sydney,Oceania,baseline,3,2,3,2,0,1,0,0.6667,0.8061,1.574,1
+Sydney,Oceania,baseline,3,3,3,2,0,1,0,0.6667,1.0591,1.664,1
+Reykjavik,Europe,minimal,1,1,3,3,0,0,0,1.0000,0.8071,1.823,1
+Reykjavik,Europe,minimal,1,2,3,1,0,2,0,0.3333,,1.511,0
+Reykjavik,Europe,minimal,1,3,3,1,0,2,0,0.3333,,1.477,0
+Reykjavik,Europe,baseline,2,1,3,3,0,0,0,1.0000,0.6993,1.778,1
+Reykjavik,Europe,baseline,2,2,3,3,0,0,0,1.0000,1.6964,1.725,1
+Reykjavik,Europe,baseline,2,3,3,3,0,0,0,1.0000,1.8955,2.021,1
+Reykjavik,Europe,compact,3,1,3,2,0,1,0,0.6667,3.5639,1.916,1
+Reykjavik,Europe,compact,3,2,3,2,0,1,0,0.6667,0.6788,1.817,1
+Reykjavik,Europe,compact,3,3,3,1,0,2,0,0.3333,,1.731,0
+Istanbul,Europe,baseline,1,1,3,3,0,0,0,1.0000,1.1436,1.752,1
+Istanbul,Europe,baseline,1,2,3,3,0,0,0,1.0000,8.3021,1.886,1
+Istanbul,Europe,baseline,1,3,3,3,0,0,0,1.0000,0.6827,1.788,1
+Istanbul,Europe,compact,2,1,3,3,0,0,0,1.0000,1.1692,1.765,1
+Istanbul,Europe,compact,2,2,3,3,0,0,0,1.0000,1.3249,1.768,1
+Istanbul,Europe,compact,2,3,3,3,0,0,0,1.0000,2.4447,1.796,1
+Istanbul,Europe,minimal,3,1,3,3,0,0,0,1.0000,1.0795,1.720,1
+Istanbul,Europe,minimal,3,2,3,3,0,0,0,1.0000,6.0602,1.767,1
+Istanbul,Europe,minimal,3,3,3,0,0,3,0,0.0000,,1.651,0
+Marrakech,Africa,compact,1,1,3,3,0,0,0,1.0000,0.7477,2.034,1
+Marrakech,Africa,compact,1,2,3,3,0,0,0,1.0000,0.7377,2.018,1
+Marrakech,Africa,compact,1,3,3,2,0,1,0,0.6667,0.3642,1.997,1
+Marrakech,Africa,minimal,2,1,3,2,0,0,1,0.6667,0.5365,1.998,1
+Marrakech,Africa,minimal,2,2,3,3,0,0,0,1.0000,2.0367,1.627,1
+Marrakech,Africa,minimal,2,3,3,3,0,0,0,1.0000,5.9683,1.746,1
+Marrakech,Africa,baseline,3,1,3,3,0,0,0,1.0000,5.8967,1.976,1
+Marrakech,Africa,baseline,3,2,3,3,0,0,0,1.0000,1.5072,1.885,1
+Marrakech,Africa,baseline,3,3,3,3,0,0,0,1.0000,0.3697,1.948,1
+Nairobi,Africa,minimal,1,1,3,3,0,0,0,1.0000,13.7922,1.592,1
+Nairobi,Africa,minimal,1,2,3,3,0,0,0,1.0000,2.8865,1.667,1
+Nairobi,Africa,minimal,1,3,3,1,0,2,0,0.3333,,1.519,0
+Nairobi,Africa,baseline,2,1,3,3,0,0,0,1.0000,4.1093,1.686,1
+Nairobi,Africa,baseline,2,2,3,3,0,0,0,1.0000,2.7687,1.710,1
+Nairobi,Africa,baseline,2,3,3,3,0,0,0,1.0000,8.6396,1.806,1
+Nairobi,Africa,compact,3,1,3,3,0,0,0,1.0000,2.8225,1.646,1
+Nairobi,Africa,compact,3,2,3,3,0,0,0,1.0000,6.8411,1.754,1
+Nairobi,Africa,compact,3,3,3,1,0,1,1,0.3333,,2.534,0
+Bangkok,Asia,baseline,1,1,3,3,0,0,0,1.0000,10.6604,1.846,1
+Bangkok,Asia,baseline,1,2,3,3,0,0,0,1.0000,2.4951,1.724,1
+Bangkok,Asia,baseline,1,3,3,2,0,1,0,0.6667,3.1727,2.311,1
+Bangkok,Asia,compact,2,1,3,3,0,0,0,1.0000,10.6604,1.930,1
+Bangkok,Asia,compact,2,2,3,3,0,0,0,1.0000,14.8629,1.703,1
+Bangkok,Asia,compact,2,3,3,3,0,0,0,1.0000,12.4352,1.895,1
+Bangkok,Asia,minimal,3,1,3,3,0,0,0,1.0000,8.7949,1.731,1
+Bangkok,Asia,minimal,3,2,3,1,0,2,0,0.3333,,1.497,0
+Bangkok,Asia,minimal,3,3,3,1,0,2,0,0.3333,,1.703,0
+Seoul,Asia,compact,1,1,3,3,0,0,0,1.0000,1.0727,1.790,1
+Seoul,Asia,compact,1,2,3,2,0,1,0,0.6667,2.5452,1.800,1
+Seoul,Asia,compact,1,3,3,2,0,1,0,0.6667,5.6332,1.705,1
+Seoul,Asia,minimal,2,1,3,3,0,0,0,1.0000,2.6334,1.745,1
+Seoul,Asia,minimal,2,2,3,3,0,0,0,1.0000,1.9472,1.798,1
+Seoul,Asia,minimal,2,3,3,0,0,3,0,0.0000,,1.640,0
+Seoul,Asia,baseline,3,1,3,3,0,0,0,1.0000,1.0727,1.729,1
+Seoul,Asia,baseline,3,2,3,2,0,1,0,0.6667,1.3492,1.733,1
+Seoul,Asia,baseline,3,3,3,2,0,1,0,0.6667,2.4674,1.750,1
+Lima,Americas,minimal,1,1,3,3,0,0,0,1.0000,6.8716,1.735,1
+Lima,Americas,minimal,1,2,3,3,0,0,0,1.0000,6.8677,1.774,1
+Lima,Americas,minimal,1,3,3,0,0,3,0,0.0000,,1.595,0
+Lima,Americas,baseline,2,1,3,3,0,0,0,1.0000,5.0735,1.782,1
+Lima,Americas,baseline,2,2,3,3,0,0,0,1.0000,13.4950,1.692,1
+Lima,Americas,baseline,2,3,3,2,0,1,0,0.6667,6.7560,1.888,1
+Lima,Americas,compact,3,1,3,2,1,0,0,0.6667,10.1156,1.796,1
+Lima,Americas,compact,3,2,3,3,0,0,0,1.0000,14.2964,1.814,1
+Lima,Americas,compact,3,3,3,3,0,0,0,1.0000,20.3685,1.981,1
+Toronto,Americas,baseline,1,1,3,3,0,0,0,1.0000,5.7804,1.546,1
+Toronto,Americas,baseline,1,2,3,3,0,0,0,1.0000,1.0497,1.680,1
+Toronto,Americas,baseline,1,3,3,2,0,1,0,0.6667,1.0849,1.679,1
+Toronto,Americas,compact,2,1,3,3,0,0,0,1.0000,5.8809,2.236,1
+Toronto,Americas,compact,2,2,3,3,0,0,0,1.0000,0.6709,1.727,1
+Toronto,Americas,compact,2,3,3,2,0,1,0,0.6667,1.8722,1.754,1
+Toronto,Americas,minimal,3,1,3,3,0,0,0,1.0000,4.4861,1.563,1
+Toronto,Americas,minimal,3,2,3,1,0,2,0,0.3333,,1.630,0
+Toronto,Americas,minimal,3,3,3,3,0,0,0,1.0000,3.4695,1.602,1
+Rome,Europe,compact,1,1,3,3,0,0,0,1.0000,1.1479,1.688,1
+Rome,Europe,compact,1,2,3,3,0,0,0,1.0000,2.3816,1.884,1
+Rome,Europe,compact,1,3,3,2,0,1,0,0.6667,2.3983,1.828,1
+Rome,Europe,minimal,2,1,3,3,0,0,0,1.0000,1.5040,1.553,1
+Rome,Europe,minimal,2,2,3,3,0,0,0,1.0000,1.5362,1.688,1
+Rome,Europe,minimal,2,3,3,0,0,3,0,0.0000,,1.516,0
+Rome,Europe,baseline,3,1,3,3,0,0,0,1.0000,2.3376,1.721,1
+Rome,Europe,baseline,3,2,3,2,0,1,0,0.6667,1.2146,1.810,1
+Rome,Europe,baseline,3,3,3,2,0,1,0,0.6667,1.6362,1.700,1
+Auckland,Oceania,minimal,1,1,3,3,0,0,0,1.0000,3.9178,1.545,1
+Auckland,Oceania,minimal,1,2,3,3,0,0,0,1.0000,2.2420,1.561,1
+Auckland,Oceania,minimal,1,3,3,3,0,0,0,1.0000,27.7473,1.757,1
+Auckland,Oceania,baseline,2,1,3,3,0,0,0,1.0000,3.6503,1.630,1
+Auckland,Oceania,baseline,2,2,3,3,0,0,0,1.0000,0.3629,1.853,1
+Auckland,Oceania,baseline,2,3,3,2,0,1,0,0.6667,1.2084,1.691,1
+Auckland,Oceania,compact,3,1,3,3,0,0,0,1.0000,1.3110,1.791,1
+Auckland,Oceania,compact,3,2,3,2,0,1,0,0.6667,0.4564,1.849,1
+Auckland,Oceania,compact,3,3,3,2,0,1,0,0.6667,2.6952,1.852,1
+Dubai,Asia,baseline,1,1,3,3,0,0,0,1.0000,1.5544,1.692,1
+Dubai,Asia,baseline,1,2,3,2,0,1,0,0.6667,3.7938,1.607,1
+Dubai,Asia,baseline,1,3,3,3,0,0,0,1.0000,6.7172,1.789,1
+Dubai,Asia,compact,2,1,3,3,0,0,0,1.0000,16.9129,1.779,1
+Dubai,Asia,compact,2,2,3,3,0,0,0,1.0000,6.2686,1.919,1
+Dubai,Asia,compact,2,3,3,3,0,0,0,1.0000,11.3813,1.625,1
+Dubai,Asia,minimal,3,1,3,3,0,0,0,1.0000,0.5016,1.680,1
+Dubai,Asia,minimal,3,2,3,3,0,0,0,1.0000,13.8393,1.652,1
+Dubai,Asia,minimal,3,3,3,3,0,0,0,1.0000,12.2964,1.865,1
+Berlin,Europe,compact,1,1,3,3,0,0,0,1.0000,2.6103,1.714,1
+Berlin,Europe,compact,1,2,3,3,0,0,0,1.0000,5.8050,1.708,1
+Berlin,Europe,compact,1,3,3,3,0,0,0,1.0000,2.9788,1.923,1
+Berlin,Europe,minimal,2,1,3,3,0,0,0,1.0000,1.1248,1.622,1
+Berlin,Europe,minimal,2,2,3,3,0,0,0,1.0000,4.3280,1.598,1
+Berlin,Europe,minimal,2,3,3,0,0,3,0,0.0000,,1.514,0
+Berlin,Europe,baseline,3,1,3,3,0,0,0,1.0000,4.1333,1.667,1
+Berlin,Europe,baseline,3,2,3,3,0,0,0,1.0000,2.7484,1.588,1
+Berlin,Europe,baseline,3,3,3,3,0,0,0,1.0000,3.5987,1.701,1
